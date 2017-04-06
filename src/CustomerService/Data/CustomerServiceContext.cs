@@ -14,6 +14,7 @@ namespace CustomerService.Data
         DbSet<Role> Roles { get; set; }        
         DbSet<Tenant> Tenants { get; set; }
         DbSet<DigitalAsset> DigitalAssets { get; set; }
+        DbSet<Customer> Customers { get; set; }
 
         Task<int> SaveChangesAsync();
     }
@@ -32,6 +33,7 @@ namespace CustomerService.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<DigitalAsset> DigitalAssets { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public override int SaveChanges()
         {

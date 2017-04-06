@@ -295,8 +295,22 @@
     <Compile Include="Data\Model\DigitalAsset.cs" />
     <Compile Include="Features\DigitalAssets\AzureBlobStorageConfiguration.cs" />
     <Compile Include="Features\DigitalAssets\AzureBlobStorageDigitalAssetCommand.cs" />
+    <Compile Include="Data\Model\Customer.cs" />
+    <Compile Include="Data\Model\QuoteRef.cs" />
+    <Compile Include="Data\Model\OrderRef.cs" />
+    <Compile Include="Data\Model\PhotoGalleryRef.cs" />
+    <Compile Include="Features\Customers\AddOrUpdateCustomerCommand.cs" />
+    <Compile Include="Features\Customers\GetCustomersQuery.cs" />
+    <Compile Include="Features\Customers\GetCustomerByIdQuery.cs" />
+    <Compile Include="Features\Customers\RemoveCustomerCommand.cs" />
+    <Compile Include="Features\Customers\CustomerApiModel.cs" />
+    <Compile Include="Features\Customers\CustomerController.cs" />
+    <Compile Include="Features\Customers\QuoteRefApiModel.cs" />
+    <Compile Include="Features\Customers\OrderRefApiModel.cs" />
+    <Compile Include="Features\Customers\PhotoGalleryRefApiModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\Customers\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
