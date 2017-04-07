@@ -16,6 +16,9 @@ namespace CustomerService.Data.Model
 		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
+
+        [ForeignKey("Customer")]
+        public int? CustomerId { get; set; }
         
 		public DateTime CreatedOn { get; set; }
         
@@ -28,5 +31,7 @@ namespace CustomerService.Data.Model
 		public bool IsDeleted { get; set; }
 
         public virtual Tenant Tenant { get; set; }
+
+        public virtual Customer Customer { get; set; }
     }
 }

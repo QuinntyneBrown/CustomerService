@@ -7,6 +7,7 @@ namespace CustomerService.Features.Customers
         public int Id { get; set; }
         public int? TenantId { get; set; }
         public string Name { get; set; }
+        public int? CustomerId { get; set; }
 
         public static TModel FromOrderRef<TModel>(OrderRef orderRef) where
             TModel : OrderRefApiModel, new()
@@ -15,6 +16,7 @@ namespace CustomerService.Features.Customers
             model.Id = orderRef.Id;
             model.TenantId = orderRef.TenantId;
             model.Name = orderRef.Name;
+            model.CustomerId = orderRef.CustomerId;
             return model;
         }
 

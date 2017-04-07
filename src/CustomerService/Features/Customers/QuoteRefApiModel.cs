@@ -5,8 +5,12 @@ namespace CustomerService.Features.Customers
     public class QuoteRefApiModel
     {        
         public int Id { get; set; }
+
         public int? TenantId { get; set; }
+
         public string Name { get; set; }
+
+        public int? CustomerId { get; set; }
 
         public static TModel FromQuoteRef<TModel>(QuoteRef quoteRef) where
             TModel : QuoteRefApiModel, new()
@@ -15,6 +19,7 @@ namespace CustomerService.Features.Customers
             model.Id = quoteRef.Id;
             model.TenantId = quoteRef.TenantId;
             model.Name = quoteRef.Name;
+            model.CustomerId = quoteRef.CustomerId;
             return model;
         }
 

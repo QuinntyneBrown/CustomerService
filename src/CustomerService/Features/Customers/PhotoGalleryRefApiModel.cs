@@ -5,8 +5,12 @@ namespace CustomerService.Features.Customers
     public class PhotoGalleryRefApiModel
     {        
         public int Id { get; set; }
+
         public int? TenantId { get; set; }
+        
         public string Name { get; set; }
+
+        public int? CustomerId { get; set; }
 
         public static TModel FromPhotoGalleryRef<TModel>(PhotoGalleryRef photoGalleryRef) where
             TModel : PhotoGalleryRefApiModel, new()
@@ -15,6 +19,7 @@ namespace CustomerService.Features.Customers
             model.Id = photoGalleryRef.Id;
             model.TenantId = photoGalleryRef.TenantId;
             model.Name = photoGalleryRef.Name;
+            model.CustomerId = photoGalleryRef.CustomerId;
             return model;
         }
 

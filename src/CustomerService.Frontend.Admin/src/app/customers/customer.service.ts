@@ -29,6 +29,5 @@ export class CustomerService {
 
     public remove(options: { id : number }) {
         return this._fetch({ url: `/api/customer/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
-    }
-    
+    }    
 }
