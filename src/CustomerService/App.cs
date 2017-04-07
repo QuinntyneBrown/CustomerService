@@ -37,10 +37,9 @@ namespace CustomerService
             config.SuppressHostPrincipal();
 
             var mediator = container.Resolve<IMediator>();
-            Lazy<IAuthConfiguration> lazyAuthConfiguration = UnityConfiguration.GetContainer().Resolve<Lazy<IAuthConfiguration>>();
+            var lazyAuthConfiguration = GetContainer().Resolve<Lazy<IAuthConfiguration>>();
 
-            config
-                .EnableSwagger(c => c.SingleApiVersion("v1", "CustomerService"))
+            config.EnableSwagger(c => c.SingleApiVersion("v1", "CustomerService"))
                 .EnableSwaggerUi();
 
             app.UseOAuthAuthorizationServer(new OAuthOptions(lazyAuthConfiguration, mediator));
