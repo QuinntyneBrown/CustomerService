@@ -40,6 +40,24 @@ namespace CustomerService.Features.Customers
                 }
 
                 entity.Name = request.Customer.Name;
+
+                entity.Firstname = request.Customer.Firstname;
+
+                entity.Lastname = request.Customer.Lastname;
+
+                entity.Address = request.Customer.Address;
+
+                entity.City = request.Customer.City;
+
+                entity.Province = request.Customer.Province;
+            
+                entity.PostalCode = request.Customer.PostalCode;
+
+                entity.PhoneNumber = request.Customer.PhoneNumber;
+
+                entity.Mobile = request.Customer.Mobile;
+
+                entity.EmailAddress = request.Customer.EmailAddress;
                 
                 await _context.SaveChangesAsync();
 
