@@ -71,8 +71,10 @@ namespace CustomerService.Features.Users
         [HttpGet]
         [AllowAnonymous]
         [ResponseType(typeof(GetUserByUsernameResponse))]
-        public async Task<IHttpActionResult> Current([FromUri]GetUserByUsernameRequest request)
+        public async Task<IHttpActionResult> Current()
         {
+            var request = new GetUserByUsernameRequest();
+            
             if (!User.Identity.IsAuthenticated)
                 return Ok();
 

@@ -42,7 +42,7 @@ namespace CustomerService.Features.DigitalAssets
                 var container = _blobClient.GetContainerReference($"{request.TenantUniqueId}");
 
                 await container.CreateIfNotExistsAsync();
-
+                
                 var response = new AzureBlobStorageDigitalAssetResponse();
 
                 foreach (var file in request.Provider.Files)
