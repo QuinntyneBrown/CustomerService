@@ -1,6 +1,6 @@
 ﻿export const environment = {
     production: true,
     applicationContextName: "CustomerServiceApp",
-    baseUrl: "http://CustomerService.azurewebsites.net",
+    baseUrl: "http://customerservice.azurewebsites.net",
     useUrlRouting: true
 };

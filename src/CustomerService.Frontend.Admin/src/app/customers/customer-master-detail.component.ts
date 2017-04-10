@@ -1,11 +1,14 @@
 import { CustomerAdd, CustomerDelete, CustomerEdit, customerActions } from "./customer.actions";
 import { Customer } from "./customer.model";
+import { CustomerService } from "./customer.service";
 
 const template = require("./customer-master-detail.component.html");
 const styles = require("./customer-master-detail.component.scss");
 
 export class CustomerMasterDetailComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _customerService: CustomerService = CustomerService.Instance
+    ) {
         super();
         this.onCustomerAdd = this.onCustomerAdd.bind(this);
         this.onCustomerEdit = this.onCustomerEdit.bind(this);
@@ -25,6 +28,7 @@ export class CustomerMasterDetailComponent extends HTMLElement {
     }
 
     private async _bind() {
+        this.customers = await this._customerService.get();
         this.customerListElement.setAttribute("customers", JSON.stringify(this.customers));
     }
 
@@ -40,21 +44,9 @@ export class CustomerMasterDetailComponent extends HTMLElement {
         this.removeEventListener(customerActions.DELETE, this.onCustomerDelete);
     }
 
-    public onCustomerAdd(e) {
-
-        const index = this.customers.findIndex(o => o.id == e.detail.customer.id);
-        const indexBaseOnUniqueIdentifier = this.customers.findIndex(o => o.name == e.detail.customer.name);
-
-        if (index > -1 && e.detail.customer.id != null) {
-            this.customers[index] = e.detail.customer;
-        } else if (indexBaseOnUniqueIdentifier > -1) {
-            for (var i = 0; i < this.customers.length; ++i) {
-                if (this.customers[i].name == e.detail.customer.name)
-                    this.customers[i] = e.detail.customer;
-            }
-        } else {
-            this.customers.push(e.detail.customer);
-        }
+    public async onCustomerAdd(e) {
+        await this._customerService.add(e.detail.customer);
+        this.customers = await this._customerService.get();
         
         this.customerListElement.setAttribute("customers", JSON.stringify(this.customers));
         this.customerEditElement.setAttribute("customer", JSON.stringify(new Customer()));
@@ -64,15 +56,9 @@ export class CustomerMasterDetailComponent extends HTMLElement {
         this.customerEditElement.setAttribute("customer", JSON.stringify(e.detail.customer));
     }
 
-    public onCustomerDelete(e) {
-        if (e.detail.customer.Id != null && e.detail.customer.Id != undefined) {
-            this.customers.splice(this.customers.findIndex(o => o.id == e.detail.optionId), 1);
-        } else {
-            for (var i = 0; i < this.customers.length; ++i) {
-                if (this.customers[i].name == e.detail.customer.name)
-                    this.customers.splice(i, 1);
-            }
-        }
+    public async onCustomerDelete(e) {
+        await this._customerService.remove(e.detail.customer.id);
+        this.customers = await this._customerService.get();
 
         this.customerListElement.setAttribute("customers", JSON.stringify(this.customers));
         this.customerEditElement.setAttribute("customer", JSON.stringify(new Customer()));
