@@ -1,14 +1,15 @@
+using CustomerService.Features.Core;
+
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+
 using static CustomerService.Features.Customers.AddOrUpdateCustomerCommand;
 using static CustomerService.Features.Customers.GetCustomersQuery;
 using static CustomerService.Features.Customers.GetCustomerByIdQuery;
 using static CustomerService.Features.Customers.RemoveCustomerCommand;
-using CustomerService.Features.Core;
+using static CustomerService.Features.Customers.RegisterCustomerCommand;
 
 namespace CustomerService.Features.Customers
 {
@@ -25,6 +26,15 @@ namespace CustomerService.Features.Customers
         [HttpPost]
         [ResponseType(typeof(AddOrUpdateCustomerResponse))]
         public async Task<IHttpActionResult> Add(AddOrUpdateCustomerRequest request)
+        {
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("register")]
+        [HttpPost]
+        [ResponseType(typeof(RegisterCustomerResponse))]
+        public async Task<IHttpActionResult> Register(RegisterCustomerRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

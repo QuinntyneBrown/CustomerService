@@ -1,8 +1,11 @@
 @import "../../styles/base/_all";
 
-ce-customer-master-detail {
-    display:block;
+ce-customer-master-detail {    
 	@extend .view-card;
+    
+    height:100%;
+    width:100%;
+    display:inline-block;
 
     ce-customer-edit-embed,
     ce-customer-list-embed {

@@ -27,6 +27,10 @@ export class CustomerService {
         return this._fetch({ url: `/api/customer/add`, method: "POST", data: { customer }, authRequired: true  });
     }
 
+    public register(customer) {
+        return this._fetch({ url: `/api/customer/register`, method: "POST", data: { customer }, authRequired: true });
+    }
+
     public remove(options: { id : number }) {
         return this._fetch({ url: `/api/customer/remove?id=${options.id}`, method: "DELETE", authRequired: true  });
     }    

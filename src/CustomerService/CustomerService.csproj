@@ -308,6 +308,8 @@
     <Compile Include="Features\Customers\QuoteRefApiModel.cs" />
     <Compile Include="Features\Customers\OrderRefApiModel.cs" />
     <Compile Include="Features\Customers\PhotoGalleryRefApiModel.cs" />
+    <Compile Include="Features\Customers\RegisterCustomerCommand.cs" />
+    <Compile Include="Features\Customers\RegisterCustomerApiModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Customers\" />
