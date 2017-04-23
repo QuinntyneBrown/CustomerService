@@ -16,7 +16,6 @@ namespace CustomerService.Features.Core
                 await context.Response.WriteAsync("Hello!");
                 return;
             }
-
             await Next.Invoke(context);
         }
     }

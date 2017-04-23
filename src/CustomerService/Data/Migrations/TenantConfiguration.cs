@@ -1,6 +1,7 @@
 using System.Data.Entity.Migrations;
 using CustomerService.Data;
 using CustomerService.Data.Model;
+using System;
 
 namespace CustomerService.Migrations
 {
@@ -10,7 +11,8 @@ namespace CustomerService.Migrations
 
             context.Tenants.AddOrUpdate(x => x.Name, new Tenant()
             {
-                Name = "Default"
+                Name = "Default",
+                UniqueId = new Guid("50848e1d-f3ec-486a-b25c-7f6cf1ef7c93")
             });
 
             context.SaveChanges();

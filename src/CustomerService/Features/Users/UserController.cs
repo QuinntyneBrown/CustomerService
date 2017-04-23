@@ -79,7 +79,9 @@ namespace CustomerService.Features.Users
                 return Ok();
 
             request.Username = User.Identity.Name;
+
             var user = await _userManager.GetUserAsync(User);
+
             request.TenantId = user.TenantId;
             
             return Ok(await _mediator.Send(request));

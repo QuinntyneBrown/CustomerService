@@ -1,5 +1,4 @@
 using CustomerService.Features.Core;
-
 using MediatR;
 using System.Threading.Tasks;
 using System.Web.Http;

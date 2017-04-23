@@ -13,7 +13,7 @@ namespace CustomerService.Data.Model
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
         
-		[Index("NameIndex", IsUnique = false)]
+		[Index("CustomerNameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
 

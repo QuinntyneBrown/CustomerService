@@ -10,6 +10,7 @@ export class CustomerEditEmbedComponent extends HTMLElement {
         super();
         this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
+        this.onCreateCustomerClick = this.onCreateCustomerClick.bind(this);
     }
 
     static get observedAttributes() {
@@ -46,11 +47,17 @@ export class CustomerEditEmbedComponent extends HTMLElement {
     private _setEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
         this._deleteButtonElement.addEventListener("click", this.onDelete);
+        this._createCustomerElement.addEventListener("click", this.onCreateCustomerClick);
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
         this._deleteButtonElement.removeEventListener("click", this.onDelete);
+        this._createCustomerElement.removeEventListener("click", this.onCreateCustomerClick);
+    }
+
+    public onCreateCustomerClick() {
+        this.dispatchEvent(new CustomerEdit(new Customer()));
     }
 
     public onSave() {
@@ -108,6 +115,7 @@ export class CustomerEditEmbedComponent extends HTMLElement {
     public customer: Customer;
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+    private get _createCustomerElement(): HTMLElement { return this.querySelector(".create-customer") as HTMLElement };
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".customer-name") as HTMLInputElement; }
