@@ -9,6 +9,8 @@ using static CustomerService.Features.Customers.GetCustomersQuery;
 using static CustomerService.Features.Customers.GetCustomerByIdQuery;
 using static CustomerService.Features.Customers.RemoveCustomerCommand;
 using static CustomerService.Features.Customers.RegisterCustomerCommand;
+using static CustomerService.Features.Customers.CreateCustomerIfDoesNotExistCommand;
+using static CustomerService.Features.Customers.GetCustomerByEmailQuery;
 
 namespace CustomerService.Features.Customers
 {
@@ -25,6 +27,16 @@ namespace CustomerService.Features.Customers
         [HttpPost]
         [ResponseType(typeof(AddOrUpdateCustomerResponse))]
         public async Task<IHttpActionResult> Add(AddOrUpdateCustomerRequest request)
+        {
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("createifdoesnotexist")]
+        [HttpPost]
+        [AllowAnonymous]
+        [ResponseType(typeof(CreateCustomerIfDoesNotExistResponse))]
+        public async Task<IHttpActionResult> CreateIfDoesNotExist(CreateCustomerIfDoesNotExistRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -63,6 +75,16 @@ namespace CustomerService.Features.Customers
         [HttpGet]
         [ResponseType(typeof(GetCustomerByIdResponse))]
         public async Task<IHttpActionResult> GetById([FromUri]GetCustomerByIdRequest request)
+        {
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [AllowAnonymous]
+        [Route("getByEmail")]
+        [HttpGet]
+        [ResponseType(typeof(GetCustomerByEmailResponse))]
+        public async Task<IHttpActionResult> GetByEmail([FromUri]GetCustomerByEmailRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

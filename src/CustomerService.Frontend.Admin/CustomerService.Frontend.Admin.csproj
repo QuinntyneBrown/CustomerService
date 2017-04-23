@@ -198,6 +198,7 @@
     <Content Include="azureBlobStorageConfiguration.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="dist\app.js" />
     <Content Include="index.html" />
     <Content Include="lib\moment.min.js" />
     <Content Include="lib\native-shim.js" />
@@ -519,14 +520,19 @@
     <TypeScriptCompile Include="src\app\customers\customer.model.ts" />
     <TypeScriptCompile Include="src\app\customers\register-customer.component.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CustomerService\CustomerService.csproj">
       <Project>{a8711bc3-f343-4e44-b045-349942559795}</Project>
       <Name>CustomerService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\app.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\customer-svc - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\customer-svc - Web Deploy.pubxml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
 </Project>
