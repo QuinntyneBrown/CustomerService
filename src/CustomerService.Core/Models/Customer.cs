@@ -10,8 +10,8 @@ namespace CustomerService.Core.Models
             => Apply(new CustomerCreated(name,CustomerId));
 
         public Guid CustomerId { get; set; } = Guid.NewGuid();          
-		public string Name { get; set; }        
-		public bool IsDeleted { get; set; }
+        public string Name { get; set; }        
+        public bool IsDeleted { get; set; }
 
         protected override void EnsureValidState()
         {
@@ -24,7 +24,7 @@ namespace CustomerService.Core.Models
             {
                 case CustomerCreated customerCreated:
                     Name = customerCreated.Name;
-					CustomerId = customerCreated.CustomerId;
+                    CustomerId = customerCreated.CustomerId;
                     break;
 
                 case CustomerNameChanged customerNameChanged:
