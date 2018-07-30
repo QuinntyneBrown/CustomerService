@@ -10,8 +10,8 @@ namespace CustomerService.Core.Models
             => Apply(new AddressCreated(AddressId));
 
         public Guid AddressId { get; set; } = Guid.NewGuid();          
-		public string Name { get; set; }        
-		public bool IsDeleted { get; set; }
+        public string Name { get; set; }        
+        public bool IsDeleted { get; set; }
 
         protected override void EnsureValidState()
         {
@@ -23,7 +23,7 @@ namespace CustomerService.Core.Models
             switch (@event)
             {
                 case AddressCreated addressCreated:
-					AddressId = addressCreated.AddressId;
+                    AddressId = addressCreated.AddressId;
                     break;
                     
                 case AddressRemoved addressRemoved:
